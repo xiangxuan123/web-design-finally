@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: springboot-helloworld
+server:
+  port: 8080
+logging:
+  level:
+    root: warn
+    com:
+      example: debug
+  pattern:
+    console: '%-5level %C.%M[%line] - %msg%n'
