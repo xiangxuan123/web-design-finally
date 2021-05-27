@@ -15,7 +15,7 @@
     </properties>
     <modules>
         <module>springboot-helloworld</module>
-        <module>springboot-mybatis</module>
+        <module>mybatis-examples</module>
     </modules>
 
 
