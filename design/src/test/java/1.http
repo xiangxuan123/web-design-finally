@@ -14,14 +14,17 @@ Content-Type: application/json
 30
 ###
 POST http://localhost:8080/api/getLab
-Token:ae801a543cd7bcaac16fd3363d3256a76d7e0b8b29f89ebf4e1fccf610ed00315d4064689354b807c71fae6d021a4fbf8780cd66bb848c93d95053172072c265
+Token:bd88860701f0084d5f1dfcca691e6307b658c592bff94b11d0d746399e9f92edff6d9d3cee3c31487af42a66dabc1de0af2f4c462c250175e3e592ab4782c54d
 Content-Type: application/json
 
 30
 ###
-POST http://localhost:8080/api/course/getCourseByTeacher
-Token: ae801a543cd7bcaac16fd3363d3256a76d7e0b8b29f89ebf4e1fccf610ed00315d4064689354b807c71fae6d021a4fbf8780cd66bb848c93d95053172072c265
+POST http://localhost:8080/api/teacher/getCourseByName
+Token: bd88860701f0084d5f1dfcca691e6307b658c592bff94b11d0d746399e9f92edff6d9d3cee3c31487af42a66dabc1de0af2f4c462c250175e3e592ab4782c54d
 
 BO
 ###
+//已修复
 GET http://localhost:8080/api/admin/getUsers
+Token: bd88860701f0084d5f1dfcca691e6307b658c592bff94b11d0d746399e9f92edff6d9d3cee3c31487af42a66dabc1de0af2f4c462c250175e3e592ab4782c54d
+###

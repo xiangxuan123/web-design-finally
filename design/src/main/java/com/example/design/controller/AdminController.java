@@ -3,11 +3,14 @@ package com.example.design.controller;
 import com.example.design.VO.ResultVO;
 import com.example.design.entity.User;
 import com.example.design.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/admin/")
 public class AdminController {
@@ -28,6 +31,8 @@ public class AdminController {
 
     @GetMapping("getUsers")
     public ResultVO getAllUser(){
+        List<User> users = userService.selectAll();
+        log.debug(users.toString());
         return ResultVO.success(Map.of("teachers",userService.selectAll()));
     }
 

@@ -17,7 +17,7 @@ public interface UserMapper extends BaseMapper<User> {
     default User getByUserName(String userName){
         return selectOne(new LambdaQueryWrapper<User>().eq(User::getUserName,userName));
     }
-    @Delete("delete from user where user.id=#{uid}")
+    @Delete("delete from user where id=#{uid}")
     void delete(@Param("uid") long uid);
 
     @Select("select * from user where role!=9")
