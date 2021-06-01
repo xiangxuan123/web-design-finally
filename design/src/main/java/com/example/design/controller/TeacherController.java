@@ -13,12 +13,12 @@ import java.util.Map;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/course/")
-public class CourseController {
+@RequestMapping("/api/teacher/")
+public class TeacherController {
     @Autowired
     private CourseService courseService;
 
-    @PostMapping("getCourseByTeacher")
+    @PostMapping("getCourseByName")
     public ResultVO getCourseByName(@RequestBody String name){
         log.debug("{}",name);
         return ResultVO.success(Map.of("courses",courseService.getCoursesByName(name)));
@@ -27,6 +27,12 @@ public class CourseController {
     @PostMapping("insertCourse")
     public ResultVO insertCourse(@RequestBody Course course){
         courseService.insertCourse(course);
-        return ResultVO.success(Map.of());
+        return ResultVO.success(Map.of("msg","课程插入成功"));
+    }
+
+    @PostMapping("delete")
+    public ResultVO delete(@RequestBody long cid){
+        courseService.delete(cid);
+        return ResultVO.success(Map.of("msg","课程删除成功"));
     }
 }

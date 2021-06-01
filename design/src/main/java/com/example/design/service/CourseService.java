@@ -21,4 +21,8 @@ public class CourseService {
     public List<Course> getCoursesByName(String name){
         return courseMapper.getCourseByName(name);
     }
+
+    public void delete(long cid){
+        courseMapper.delete(cid);
+    }
 }
