@@ -17,4 +17,8 @@ public class ClassroomMessageService {
     public List<ClassroomMessage> getMessageById(String id){
         return classroomMessageMapper.getMessage(id);
     }
+
+    public void insert(ClassroomMessage message){
+        classroomMessageMapper.insert(message);
+    }
 }

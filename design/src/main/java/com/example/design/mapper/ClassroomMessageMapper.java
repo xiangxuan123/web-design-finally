@@ -11,7 +11,7 @@ import java.util.List;
 
 @Mapper
 @Repository
-public interface ClassroomMessageMapper extends BaseMapper<ClassroomMessageMapper> {
+public interface ClassroomMessageMapper extends BaseMapper<ClassroomMessage> {
     @Select("select * from classroomMessage where id = #{labid}")
     List<ClassroomMessage> getMessage(@Param("labid") String labid);
 }

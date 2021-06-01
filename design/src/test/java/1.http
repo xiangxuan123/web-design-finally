@@ -24,3 +24,4 @@ Token: ae801a543cd7bcaac16fd3363d3256a76d7e0b8b29f89ebf4e1fccf610ed00315d4064689
 
 BO
 ###
+GET http://localhost:8080/api/admin/getUsers
