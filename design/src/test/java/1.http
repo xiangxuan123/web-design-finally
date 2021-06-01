@@ -1,0 +1,26 @@
+###
+POST http://localhost:8080/api/login
+Content-Type: application/json
+
+{
+  "userName": "admin",
+  "password": "admin"
+}
+###
+//没有token
+POST http://localhost:8080/api/getLab
+Content-Type: application/json
+
+30
+###
+POST http://localhost:8080/api/getLab
+Token:ae801a543cd7bcaac16fd3363d3256a76d7e0b8b29f89ebf4e1fccf610ed00315d4064689354b807c71fae6d021a4fbf8780cd66bb848c93d95053172072c265
+Content-Type: application/json
+
+30
+###
+POST http://localhost:8080/api/course/getCourseByTeacher
+Token: ae801a543cd7bcaac16fd3363d3256a76d7e0b8b29f89ebf4e1fccf610ed00315d4064689354b807c71fae6d021a4fbf8780cd66bb848c93d95053172072c265
+
+BO
+###

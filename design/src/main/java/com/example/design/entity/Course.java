@@ -14,8 +14,12 @@ import java.time.LocalDateTime;
 @ToString
 public class Course {
     private Long id;
-    private String name;
-    private Long teacherId;
+    private String courseName;
+    private Long start;
+    private Long end;
+    private Long period;
+    private String teacherName;
+    private Long studentNumber;
     @TableField(updateStrategy = FieldStrategy.NEVER)
     private LocalDateTime createTime;
 

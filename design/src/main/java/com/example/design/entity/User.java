@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class User {
     private Long id;
     private String name;
-    private String number;
+    private String userName;
     private String password;
     private Integer role;
     @TableField(updateStrategy = FieldStrategy.NEVER)

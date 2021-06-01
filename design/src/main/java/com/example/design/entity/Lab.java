@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Lab {
-    private Long id;
+    private String id;
     private Long number;
     private String detail;
     @TableField(updateStrategy = FieldStrategy.NEVER)

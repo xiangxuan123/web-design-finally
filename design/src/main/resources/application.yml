@@ -1,6 +1,14 @@
 spring:
   application:
-    name: springMVC
+    name: design
+  datasource:
+    url: 'jdbc:mysql://114.116.213.241:3306/2018214220?
+            createDatabaseIfNotExist=true
+            &serverTimezone=Asia/Shanghai'
+    username: 2018214220
+    password: 2018214220
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialization-mode: always
   jackson:
     default-property-inclusion: non_null # 序列化时忽略空值属性
 server:
