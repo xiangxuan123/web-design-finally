@@ -6,6 +6,8 @@ import com.example.design.entity.Lab;
 import com.example.design.entity.User;
 import com.example.design.service.LabService;
 import com.example.design.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@Api(value = "处理登录/未登录操作请求",tags = {"登录以及用户操作"})
 @Slf4j
 @RestController
 @RequestMapping("/api/")
@@ -28,6 +31,7 @@ public class LoginController {
     @Autowired
     private LabService labService;
 
+    @ApiOperation(value = "登录")
     @PostMapping("login")
     public ResultVO login(@RequestBody User user, HttpServletResponse response){
         User u = userService.getUser(user.getUserName());
@@ -40,6 +44,7 @@ public class LoginController {
         return ResultVO.success(Map.of("user",u));
     }
 
+    @ApiOperation(value = "登录后查询某一实验室的预约情况")
     @PostMapping("getLab")
     public ResultVO getLabId(@RequestBody long number){
         return ResultVO.success(Map.of("id",

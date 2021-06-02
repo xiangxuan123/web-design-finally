@@ -16,4 +16,16 @@ public class LabService {
     public List<Lab> getLabByNumber(long number){
         return labMapper.getLab(number);
     }
+    public void insert(Lab lab){
+        labMapper.insert(lab);
+    }
+    public List<Lab> getAllLab(){
+        return labMapper.getAllLab();
+    }
+    public void deleteLab(String labID){
+        labMapper.deleteLab(labID);
+    }
+    public void updateLab(int number,String detail,String labID){
+        labMapper.updateLab(number,detail,labID);
+    }
 }

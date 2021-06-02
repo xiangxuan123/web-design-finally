@@ -21,4 +21,16 @@ public class ClassroomMessageService {
     public void insert(ClassroomMessage message){
         classroomMessageMapper.insert(message);
     }
+//    //删除实验室取消实验室所有预约
+//    public void deleteMessageByLabID(String id){
+//        classroomMessageMapper.deleteMessageByLabID(id);
+//    }
+    //teacher取消预约
+    public void deleteMessageByMID(long mid){
+        classroomMessageMapper.deleteMessageByID(mid);
+    }
+
+    public List<ClassroomMessage> getMessageByTeacher(long uid){
+        return classroomMessageMapper.getMessageByTeacher(uid);
+    }
 }

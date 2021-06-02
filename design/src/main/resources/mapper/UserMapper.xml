@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.design.mapper.UserMapper">
+    <resultMap id="CourseResultMap" type="com.example.design.DTO.UserDTO">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="user_name" property="userName"/>
+        <result column="password" property="password"/>
+        <result column="role" property="role"/>
+        <collection property="courses"
+                    columnPrefix="c_"
+                    javaType="com.example.design.entity.Course"
+                    autoMapping="true" />
+    </resultMap>
+    <select id="getCourses" resultMap="CourseResultMap">
+        select u.*,
+               c.id c_id,
+               c.course_name c_courseName,
+               c.start c_start,
+               c.end c_end,
+               c.period c_period,
+               c.teacher_id c_teacherId,
+               c.teacher_name c_teacherName,
+               c.student_number c_studentNumber
+        from user u join course c on u.id = c.teacher_id
+        where u.id=#{uid}
+    </select>
+</mapper>

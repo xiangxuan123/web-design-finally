@@ -15,11 +15,6 @@ public class CourseTest {
     @Autowired
     private UserService userService;
 
-    @Test
-    public void getCourse(){
-        courseService.getCoursesByName("BO")
-                .forEach(course -> System.out.println(course.getCourseName()));
-    }
 
     @Test
     public void getUser(){

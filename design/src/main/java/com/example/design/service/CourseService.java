@@ -1,5 +1,6 @@
 package com.example.design.service;
 
+import com.example.design.DTO.UserDTO;
 import com.example.design.entity.Course;
 import com.example.design.mapper.CourseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +19,15 @@ public class CourseService {
         courseMapper.insert(course1);
     }
 
-    public List<Course> getCoursesByName(String name){
-        return courseMapper.getCourseByName(name);
+    public List<UserDTO> getCourses(long uid){
+        return courseMapper.getCourses(uid);
     }
 
     public void delete(long cid){
         courseMapper.delete(cid);
+    }
+    public void update(long cid,Course course){
+        courseMapper.delete(cid);
+        courseMapper.insert(course);
     }
 }

@@ -46,11 +46,11 @@ public class InitService implements InitializingBean {
         if(count == 0){
             Lab lab = Lab.builder()
                     .id("901")
-                    .number(50L)
+                    .number(50)
                     .build();
             Lab lab1 = Lab.builder()
                     .id("902")
-                    .number(20L)
+                    .number(20)
                     .build();
             labMapper.insert(lab);
             labMapper.insert(lab1);
@@ -70,16 +70,16 @@ public class InitService implements InitializingBean {
         if(count == 0 ){
             Course course = Course.builder()
                     .courseName("WEB")
-                    .period(32L)
-                    .start(1L)
-                    .end(10L)
+                    .period(32)
+                    .start(1)
+                    .end(10)
                     .teacherName("BO")
                     .build();
             Course course1 = Course.builder()
                     .courseName("JAVA")
-                    .period(48L)
-                    .start(5L)
-                    .end(15L)
+                    .period(48)
+                    .start(5)
+                    .end(15)
                     .teacherName("BO")
                     .build();
             courseMapper.insert(course);

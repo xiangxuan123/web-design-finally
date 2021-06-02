@@ -15,11 +15,12 @@ import java.time.LocalDateTime;
 public class Course {
     private Long id;
     private String courseName;
-    private Long start;
-    private Long end;
-    private Long period;
+    private Integer start;
+    private Integer end;
+    private Integer period;
+    private Long teacherId;
     private String teacherName;
-    private Long studentNumber;
+    private Integer studentNumber;
     @TableField(updateStrategy = FieldStrategy.NEVER)
     private LocalDateTime createTime;
 

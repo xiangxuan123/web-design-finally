@@ -5,11 +5,12 @@ create table if not exists course
     start bigint(19) ,
     end bigint(19) ,
     `period` bigint(19) ,
+    teacher_id bigint(19),
     teacher_name varchar(45),
     student_number bigint(19),
     create_time datetime not null default current_timestamp,
     update_time datetime not null default current_timestamp on update current_timestamp,
-    index (teacher_name)
+    index (teacher_id)
 );
 create table if not exists user
 (
@@ -40,11 +41,13 @@ create table if not exists lab
 );
 create table if not exists classroomMessage
 (
-    id bigint(45) not null primary key ,
+    message_id bigint(19) not null primary key ,
+    id varchar(45) not null,
     lesson varchar(45) ,
     course_name varchar(45),
     start bigint(19) ,
     end bigint(19) ,
+    teacher_id bigint(19),
     teacher_name varchar(45),
     title varchar(45),
     index(id)
