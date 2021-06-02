@@ -39,3 +39,18 @@ Content-Type: application/json
 GET http://localhost:8080/api/admin/getUsers
 Token: bde7eabfb8df9a169775d5a88c36fd4ee14394d9260942340aa92c490a266ac2a5c902f2f34d5962f650f09a0f1625fa82159c831bfc85912c7c604a87f69af2
 ###
+GET http://localhost:8080/api/teacher/getCourse
+Token: 7e4ad1369a2d5722b95656e7f532847d54cec110e2452c18ec2c4383db066e2dc2986c16b8e92e8eb0e9b9cdbbda91f3a29d4ebeaf75152d4c470eb33224367a
+###
+POST http://localhost:8080/api/teacher/insertCourse
+Token: b9c23c85a2f3296911f464af3370f9b3cc22adf7632ed684692d99d11e131b403c5aec0a7fbd1688c4bfe55c18bca262388d8b7c29a25557320bada456db49e0
+Content-Type: application/json
+
+{
+  "courseName": "JAVA",
+  "end": 10,
+  "period": 32,
+  "start": 1,
+  "studentNumber": 30
+}
+###

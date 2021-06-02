@@ -55,7 +55,7 @@ public class InitService implements InitializingBean {
             labMapper.insert(lab);
             labMapper.insert(lab1);
         }
-        //初始化教师和课程
+        //初始化教师
         count = userMapper.selectCount(new QueryWrapper<User>().select("id"));
         if (count == 1) {
             User user = User.builder()
@@ -65,25 +65,6 @@ public class InitService implements InitializingBean {
                     .role(5)
                     .build();
             userMapper.insert(user);
-        }
-        count = courseMapper.selectCount(new QueryWrapper<Course>().select("id"));
-        if(count == 0 ){
-            Course course = Course.builder()
-                    .courseName("WEB")
-                    .period(32)
-                    .start(1)
-                    .end(10)
-                    .teacherName("BO")
-                    .build();
-            Course course1 = Course.builder()
-                    .courseName("JAVA")
-                    .period(48)
-                    .start(5)
-                    .end(15)
-                    .teacherName("BO")
-                    .build();
-            courseMapper.insert(course);
-            courseMapper.insert(course1);
         }
     }
 }

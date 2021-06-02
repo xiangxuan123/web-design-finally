@@ -1,11 +1,13 @@
 package com.example.design.controller;
 
 
+import com.example.design.DTO.UserDTO;
 import com.example.design.VO.ResultVO;
 import com.example.design.entity.Course;
-import com.example.design.entity.User;
+import com.example.design.entity.Teacher;
 import com.example.design.service.ClassroomMessageService;
 import com.example.design.service.CourseService;
+import com.example.design.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -25,37 +27,41 @@ public class TeacherController {
     private CourseService courseService;
     @Autowired
     private ClassroomMessageService classroomMessageService;
+    @Autowired
+    private UserService userService;
 
     @ApiOperation(value = "基于登录的教师账号查询教授课程")
     @GetMapping("getCourse")
     public ResultVO getCourse(@RequestAttribute("uid") long uid){
-
-        return ResultVO.success(Map.of("courses",courseService.getCourses(uid)));
+        return ResultVO.success(Map.of("courses",courseService.getCourseByUid(uid)));
     }
 
     @ApiOperation(value = "添加课程信息")
     @PostMapping("insertCourse")
-    public ResultVO insertCourse(@RequestBody Course course){
+    public ResultVO insertCourse(@RequestBody Course course,@RequestAttribute("uid") long uid){
+        course.setTeacherId(uid);
+        course.setTeacherName(userService.getUserByID(uid).getName());
         courseService.insertCourse(course);
-        return ResultVO.success(Map.of("cid","课程插入成功"));
+
+        return ResultVO.success(Map.of("courses",courseService.getCourseByUid(uid)));
     }
 
     @ApiOperation(value = "基于cid删除课程")
-    @PostMapping("deleteCourse")
-    public ResultVO delete(@RequestBody long cid){
+    @DeleteMapping("deleteCourse/{cid}")
+    public ResultVO delete(@PathVariable long cid,@RequestAttribute("uid") long uid){
         courseService.delete(cid);
-        return ResultVO.success(Map.of("msg","课程删除成功"));
+        return ResultVO.success(Map.of("courses",courseService.getCourses(uid)));
     }
 
     @ApiOperation(value = "基于cid更新课程信息")
-    @PostMapping("update")
-    public ResultVO update(@RequestBody long cid,Course course){
+    @PatchMapping("update")
+    public ResultVO update(@RequestBody long cid,Course course,@RequestAttribute("uid") long uid){
         courseService.update(cid,course);
-        return ResultVO.success(Map.of("msg","课程更新成功"));
+        return ResultVO.success(Map.of("courses",courseService.getCourses(uid)));
     }
     @ApiOperation(value = "基于预约id取消预约")
-    @PostMapping("deleteMessage")
-    public ResultVO deleteTeacher(@RequestBody long mid){
+    @DeleteMapping("deleteMessage/{mid}")
+    public ResultVO deleteTeacher(@PathVariable long mid){
         classroomMessageService.deleteMessageByMID(mid);
         return ResultVO.success(Map.of("msg","取消预约成功"));
     }

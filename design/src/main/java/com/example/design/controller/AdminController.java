@@ -9,6 +9,7 @@ import com.example.design.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -40,22 +41,20 @@ public class AdminController {
                 .role(5)
                 . build();
         userService.insertUser(u);
-        return ResultVO.success(Map.of("msg","插入成功"));
+        return ResultVO.success(Map.of("teachers",userService.selectAll()));
     }
 
     @ApiOperation(value = "查询所有用户")
     @GetMapping("getUsers")
     public ResultVO getAllUser(){
-        List<User> users = userService.selectAll();
-        log.debug(users.toString());
         return ResultVO.success(Map.of("teachers",userService.selectAll()));
     }
 
     @ApiOperation(value = "基于id删除用户")
-    @PostMapping("delete")
-    public ResultVO delete(@RequestBody long uid){
+    @DeleteMapping("delete/{uid}")
+    public ResultVO delete(@PathVariable long uid){
         userService.delete(uid);
-        return ResultVO.success(Map.of("msg","删除成功"));
+        return ResultVO.success(Map.of("teachers",userService.selectAll()));
     }
 
     //lab
@@ -63,7 +62,7 @@ public class AdminController {
     @PostMapping("insertLab")
     public ResultVO insertLab(@RequestBody Lab lab){
         labService.insert(lab);
-        return ResultVO.success(Map.of("msg","插入成功"));
+        return ResultVO.success(Map.of("labs",labService.getAllLab()));
     }
 //    @GetMapping("allLab")
 //    public ResultVO getAllLab(){

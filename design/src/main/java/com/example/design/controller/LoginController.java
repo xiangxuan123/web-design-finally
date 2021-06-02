@@ -45,9 +45,9 @@ public class LoginController {
         return ResultVO.success(Map.of("user",u));
     }
 
-    @ApiOperation(value = "登录后查询某一实验室的预约情况")
-    @PostMapping("getLab")
-    public ResultVO getLabId(@RequestBody long number){
+    @ApiOperation(value = "登录后基于人数查询实验室")
+    @GetMapping("getLab/{number}")
+    public ResultVO getLabId(@PathVariable long number){
         return ResultVO.success(Map.of("id",
                 labService.getLabByNumber(number).stream()
                 .map(Lab::getId)

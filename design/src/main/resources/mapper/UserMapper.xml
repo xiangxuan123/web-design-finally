@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.design.mapper.UserMapper">
+<mapper namespace="com.example.design.mapper.CourseMapper">
     <resultMap id="CourseResultMap" type="com.example.design.DTO.UserDTO">
         <result column="id" property="id"/>
         <result column="name" property="name"/>
@@ -21,7 +21,9 @@
                c.period c_period,
                c.teacher_id c_teacherId,
                c.teacher_name c_teacherName,
-               c.student_number c_studentNumber
+               c.student_number c_studentNumber,
+               c.create_time c_createTime,
+               c.update_time c_updateTime
         from user u join course c on u.id = c.teacher_id
         where u.id=#{uid}
     </select>

@@ -14,7 +14,9 @@ import java.util.List;
 @Repository
 @Mapper
 public interface CourseMapper extends BaseMapper<Course> {
-    List<UserDTO> getCourses(long uid);
+    UserDTO getCourses(long uid);
     @Delete("delete from course where id=#{cid}")
     void delete(@Param("cid") long cid);
+    @Select("select * from course where teacher_id=#{uid}")
+    List<Course> getCourseByUid(@Param("uid") long uid);
 }
