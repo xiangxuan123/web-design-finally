@@ -10,6 +10,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +21,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/admin/")
 public class AdminController {
+    @Autowired
+    private PasswordEncoder encoder;
     @Autowired
     private UserService userService;
     @Autowired
@@ -32,7 +35,7 @@ public class AdminController {
     public ResultVO addUser(User user){
         User u = User.builder()
                 .name(user.getName())
-                .password(user.getPassword())
+                .password(encoder.encode(user.getPassword()))
                 .userName(user.getUserName())
                 .role(5)
                 . build();

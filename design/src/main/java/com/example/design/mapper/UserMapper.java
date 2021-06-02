@@ -3,10 +3,7 @@ package com.example.design.mapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.design.entity.User;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,4 +19,6 @@ public interface UserMapper extends BaseMapper<User> {
 
     @Select("select * from user where role!=9")
     List<User> selectAll();
+    @Update("update user set password=#{password} where id=#{uid}")
+    void setPassword(@Param("password") String password,@Param("uid")long uid);
 }

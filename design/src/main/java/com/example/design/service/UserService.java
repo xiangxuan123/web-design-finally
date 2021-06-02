@@ -30,4 +30,10 @@ public class UserService {
     public List<User> selectAll(){
         return userMapper.selectAll();
     }
+    public void setPassword(String password,long uid){
+        userMapper.setPassword(password,uid);
+    }
+    public User getUserByID(long uid){
+        return userMapper.selectById(uid);
+    }
 }

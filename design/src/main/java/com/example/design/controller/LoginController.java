@@ -34,6 +34,7 @@ public class LoginController {
     @ApiOperation(value = "登录")
     @PostMapping("login")
     public ResultVO login(@RequestBody User user, HttpServletResponse response){
+        //基于用户名查询
         User u = userService.getUser(user.getUserName());
         if(u == null || !encoder.matches(user.getPassword(),u.getPassword())){
             return ResultVO.error(401,"用户名密码错误");
@@ -51,5 +52,16 @@ public class LoginController {
                 labService.getLabByNumber(number).stream()
                 .map(Lab::getId)
                 .collect(Collectors.toList())));
+    }
+
+    @ApiOperation(value = "修改密码")
+    @PostMapping("setPassword")
+    public ResultVO setPassword(@RequestAttribute("uid") long uid, @RequestBody String oldPassword,@RequestBody String newPassword){
+        User u = userService.getUserByID(uid);
+        if(!encoder.matches(oldPassword,u.getPassword())){
+            return ResultVO.error(401,"用户名密码错误");
+        }
+        userService.setPassword(encoder.encode(newPassword),uid);
+        return ResultVO.success(Map.of());
     }
 }
