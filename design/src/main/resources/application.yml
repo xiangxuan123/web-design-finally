@@ -1,6 +1,14 @@
 spring:
   application:
     name: design
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+  cache:
+    redis:
+        cache-null-values: true
+        time-to-live: 50000
   datasource:
     url: 'jdbc:mysql://114.116.213.241:3306/2018214220?
             createDatabaseIfNotExist=true

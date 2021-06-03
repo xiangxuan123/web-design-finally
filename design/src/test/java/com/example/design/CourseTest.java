@@ -28,8 +28,7 @@ public class CourseTest {
 
     @Test
     public void courseTest(){
-        courseService.getCourses(1399994507637821442L).getCourses()
-                .forEach(course -> System.out.println(course.getCourseName()));
+        courseService.getCourseByUid(1399994507637821442L);
     }
     @Test
     public void getUser(){
