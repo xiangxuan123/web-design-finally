@@ -56,6 +56,7 @@ public class AdminController {
         if(user == null){
             return ResultVO.error(400,"该用户不存在");
         }
+        classroomMessageService.deleteMessageByTeacher(uid);
         userService.delete(uid);
         return ResultVO.success(Map.of("teachers",userService.selectAll()));
     }

@@ -42,8 +42,16 @@ public class ClassroomMessageService {
     public void deleteMessageByMID(long mid,long uid){
         classroomMessageMapper.deleteMessageByID(mid);
     }
+    @CacheEvict(value = "labIdMessage",key = "#labID")
     public void deleteMessageByLabID(String labID){
         classroomMessageMapper.deleteMessageByLabID(labID);
+    }
+    @Caching(evict = {
+            @CacheEvict(value = "uidMessage",key = "#uid"),
+            @CacheEvict(value = "labIdMessage",allEntries = true)
+    })
+    public void deleteMessageByTeacher(long uid){
+        classroomMessageMapper.deleteMessageByTeacher(uid);
     }
 
     @Cacheable(value = "uidMessage", key = "#uid")
