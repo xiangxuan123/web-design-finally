@@ -42,6 +42,9 @@ public class ClassroomMessageService {
     public void deleteMessageByMID(long mid,long uid){
         classroomMessageMapper.deleteMessageByID(mid);
     }
+    public void deleteMessageByLabID(String labID){
+        classroomMessageMapper.deleteMessageByLabID(labID);
+    }
 
     @Cacheable(value = "uidMessage", key = "#uid")
     public List<ClassroomMessage> getMessageByTeacher(long uid){

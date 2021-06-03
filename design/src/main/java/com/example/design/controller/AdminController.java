@@ -81,6 +81,7 @@ public class AdminController {
         if(lab == null || lab.getId()!=labID){
             return ResultVO.error(400,"该实验室不存在");
         }
+        classroomMessageService.deleteMessageByLabID(labID);
         labService.deleteLab(labID);
         return ResultVO.success(Map.of("msg","删除成功"));
     }
