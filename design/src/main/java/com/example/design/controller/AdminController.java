@@ -9,7 +9,6 @@ import com.example.design.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -53,6 +52,10 @@ public class AdminController {
     @ApiOperation(value = "基于id删除用户")
     @DeleteMapping("delete/{uid}")
     public ResultVO delete(@PathVariable long uid){
+        User user = userService.getUserByID(uid);
+        if(user == null){
+            return ResultVO.error(400,"该用户不存在");
+        }
         userService.delete(uid);
         return ResultVO.success(Map.of("teachers",userService.selectAll()));
     }
@@ -64,16 +67,23 @@ public class AdminController {
         labService.insert(lab);
         return ResultVO.success(Map.of("labs",labService.getAllLab()));
     }
-//    @GetMapping("allLab")
-//    public ResultVO getAllLab(){
-//        return  ResultVO.success(Map.of("lab",labService.getAllLab()));
-//    }
-//    @PostMapping("deleteLab")
-//    public ResultVO deleteLab(@RequestBody String labID){
-//        labService.deleteLab(labID);
-//        classroomMessageService.deleteMessageByLabID(labID);
-//        return ResultVO.success(Map.of("msg","删除成功"));
-//    }
+
+    @ApiOperation(value = "查询所有实验室")
+    @GetMapping("allLab")
+    public ResultVO getAllLab(){
+        return  ResultVO.success(Map.of("lab",labService.getAllLab()));
+    }
+
+    @ApiOperation(value = "基于实验室id删除实验室")
+    @DeleteMapping("deleteLab/{labID}")
+    public ResultVO deleteLab(@PathVariable String labID){
+        Lab lab = labService.getLab(labID);
+        if(lab == null || lab.getId()!=labID){
+            return ResultVO.error(400,"该实验室不存在");
+        }
+        labService.deleteLab(labID);
+        return ResultVO.success(Map.of("msg","删除成功"));
+    }
 //    @PostMapping("updateLab")
 //    public ResultVO updateLab(@RequestBody Lab lab){
 //        labService.updateLab(lab.getNumber(),lab.getDetail(),lab.getId());

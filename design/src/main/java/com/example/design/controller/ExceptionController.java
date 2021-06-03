@@ -5,6 +5,7 @@ import com.example.design.VO.ResultVO;
 import com.example.design.common.MyException;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -40,6 +41,13 @@ public class ExceptionController {
                     strBuilder.append("; ");
                 });
         return ResultVO.error(400, strBuilder.toString());
+    }
+    /**
+     * 重复插入数据
+     */
+    @ExceptionHandler(DuplicateKeyException.class)
+    public ResultVO handleValidException(DuplicateKeyException exception){
+        return ResultVO.error(400,"数据已存在，插入失败");
     }
 
 

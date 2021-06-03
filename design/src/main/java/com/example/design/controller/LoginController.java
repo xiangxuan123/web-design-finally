@@ -39,6 +39,7 @@ public class LoginController {
         if(u == null || !encoder.matches(user.getPassword(),u.getPassword())){
             return ResultVO.error(401,"用户名密码错误");
         }
+        userService.UserCache(u.getId());
         String token = encryptComponent.encrypt(Map.of("uid",u.getId(),"role",u.getRole()));
         response.addHeader("token",token);
         log.debug("{}",token);

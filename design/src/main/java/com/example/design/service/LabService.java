@@ -34,6 +34,9 @@ public class LabService {
     public void deleteLab(String labID){
         labMapper.deleteLab(labID);
     }
+    public Lab getLab(String labID){
+        return labMapper.selectById(labID);
+    }
     @CacheEvict(value = "allLab",allEntries = true)
     public void updateLab(int number,String detail,String labID){
         labMapper.updateLab(number,detail,labID);

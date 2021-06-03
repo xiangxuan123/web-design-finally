@@ -47,4 +47,8 @@ public class ClassroomMessageService {
     public List<ClassroomMessage> getMessageByTeacher(long uid){
         return classroomMessageMapper.getMessageByTeacher(uid);
     }
+
+    public ClassroomMessage getMessageByMid(long mid){
+        return classroomMessageMapper.selectById(mid);
+    }
 }

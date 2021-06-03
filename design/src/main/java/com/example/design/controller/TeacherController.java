@@ -3,6 +3,7 @@ package com.example.design.controller;
 
 import com.example.design.DTO.UserDTO;
 import com.example.design.VO.ResultVO;
+import com.example.design.entity.ClassroomMessage;
 import com.example.design.entity.Course;
 import com.example.design.entity.Teacher;
 import com.example.design.service.ClassroomMessageService;
@@ -49,20 +50,28 @@ public class TeacherController {
     @ApiOperation(value = "基于cid删除课程")
     @DeleteMapping("deleteCourse/{cid}")
     public ResultVO delete(@PathVariable long cid,@RequestAttribute("uid") long uid){
-        courseService.delete(cid);
-        return ResultVO.success(Map.of("courses",courseService.getCourses(uid)));
+        Course course = courseService.getCourseByCid(cid);
+        if(course==null||course.getTeacherId()!=uid){
+            return ResultVO.error(400,"该课程不存在");
+        }
+        courseService.delete(cid,uid);
+        return ResultVO.success(Map.of("courses",courseService.getCourseByUid(uid)));
     }
 
     @ApiOperation(value = "基于cid更新课程信息")
     @PatchMapping("update")
     public ResultVO update(@RequestBody long cid,Course course,@RequestAttribute("uid") long uid){
         courseService.update(cid,course);
-        return ResultVO.success(Map.of("courses",courseService.getCourses(uid)));
+        return ResultVO.success(Map.of("courses",courseService.getCourseByUid(uid)));
     }
     @ApiOperation(value = "基于预约id取消预约")
     @DeleteMapping("deleteMessage/{mid}")
-    public ResultVO deleteTeacher(@PathVariable long mid){
-        classroomMessageService.deleteMessageByMID(mid);
+    public ResultVO deleteTeacher(@PathVariable long mid,@RequestAttribute("uid") long uid){
+        ClassroomMessage message = classroomMessageService.getMessageByMid(mid);
+        if(message==null||message.getTeacherId()!=uid){
+            return ResultVO.error(400,"预约记录不存在");
+        }
+        classroomMessageService.deleteMessageByMID(mid,uid);
         return ResultVO.success(Map.of("msg","取消预约成功"));
     }
     @ApiOperation(value = "获取自己所有实验课的课表")

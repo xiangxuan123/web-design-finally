@@ -41,4 +41,8 @@ public class CourseService {
         courseMapper.delete(cid);
         courseMapper.insert(course);
     }
+
+    public Course getCourseByCid(long cid){
+        return courseMapper.selectById(cid);
+    }
 }
