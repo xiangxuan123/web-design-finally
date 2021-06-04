@@ -4,6 +4,7 @@ import com.example.design.DTO.UserDTO;
 import com.example.design.entity.Course;
 import com.example.design.entity.User;
 import com.example.design.mapper.CourseMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Slf4j
 @Service
 @Transactional
 public class CourseService {
@@ -29,6 +31,7 @@ public class CourseService {
     }
     @Cacheable(value = "courses",key = "#uid")
     public List<Course> getCourseByUid(long uid){
+        log.debug("{}",uid);
         return courseMapper.getCourseByUid(uid);
     }
 

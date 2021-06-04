@@ -19,20 +19,22 @@ Content-Type: application/json
 
 30
 ###
-POST http://localhost:8080/api/teacher/getCourse
-Token: bd88860701f0084d5f1dfcca691e6307b658c592bff94b11d0d746399e9f92edff6d9d3cee3c31487af42a66dabc1de0af2f4c462c250175e3e592ab4782c54d
+GET http://localhost:8080/api/teacher/getCourse
+Token: 5e130f3a74a6351ac84b77227b2a6f5d9e62b8fb6c000f2e1b7eb788b8f93828f8d8608c389a6b51f721ad99a5c1aaf04e9ede351e74e92d64712c55b6e0c58b
 
 ###
 //已修复
 GET http://localhost:8080/api/admin/getUsers
 Token: bde7eabfb8df9a169775d5a88c36fd4ee14394d9260942340aa92c490a266ac2a5c902f2f34d5962f650f09a0f1625fa82159c831bfc85912c7c604a87f69af2
 ###
-POST http://localhost:8080/api/login
+POST http://localhost:8080/api/admin/add
+Token: 1c8691339793ce2265e31dd459786a0bb3d6def2e72000a7c4ee3c801d01e10da651a25574f15ee5945d363f5b4514a7e9b564ae714d7a1507e29c5621b86574
 Content-Type: application/json
 
 {
-  "userName": "BO",
-  "password": "BO"
+  "name": "BO",
+  "password": "BO",
+  "userName": "BO"
 }
 ###
 //teacher访问admin

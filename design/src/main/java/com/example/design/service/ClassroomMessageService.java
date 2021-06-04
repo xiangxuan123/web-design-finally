@@ -60,6 +60,6 @@ public class ClassroomMessageService {
     }
 
     public ClassroomMessage getMessageByMid(long mid){
-        return classroomMessageMapper.selectById(mid);
+        return classroomMessageMapper.getMessageByMId(mid);
     }
 }

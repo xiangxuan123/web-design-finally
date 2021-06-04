@@ -21,4 +21,6 @@ public interface UserMapper extends BaseMapper<User> {
     List<User> selectAll();
     @Update("update user set password=#{password} where id=#{uid}")
     void setPassword(@Param("password") String password,@Param("uid")long uid);
+    @Select("select * from user where id = #{uid}")
+    User getUserById(@Param("uid") long uid);
 }

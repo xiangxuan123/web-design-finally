@@ -23,4 +23,6 @@ public interface ClassroomMessageMapper extends BaseMapper<ClassroomMessage> {
     List<ClassroomMessage> getMessageByTeacher(@Param("uid") long uid);
     @Delete("delete from classroomMessage where teacher_id = #{uid}")
     void deleteMessageByTeacher(@Param("uid")long uid);
+    @Select("select * from classroomMessage where message_id=#{mid}")
+    ClassroomMessage getMessageByMId(@Param("mid")long mid);
 }

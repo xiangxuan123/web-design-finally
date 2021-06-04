@@ -48,6 +48,6 @@ public class UserService {
     }
     @Cacheable(value = "user",key = "#uid")
     public User getUserByID(long uid){
-        return userMapper.selectById(uid);
+        return userMapper.getUserById(uid);
     }
 }

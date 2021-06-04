@@ -21,4 +21,6 @@ public interface LabMapper extends BaseMapper<Lab> {
     void deleteLab(@Param("lab")String lab);
     @Update("update lab set number = #{number},detail = #{detail} where id=#{labID}")
     void updateLab(@Param("number") int number,@Param("detail") String detail,@Param("labID") String labID);
+    @Select("select * from lab where lab.id = #{labID}")
+    Lab getLabById(@Param("labID")String labid);
 }
