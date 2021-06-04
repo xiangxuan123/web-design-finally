@@ -62,4 +62,7 @@ public class ClassroomMessageService {
     public ClassroomMessage getMessageByMid(long mid){
         return classroomMessageMapper.getMessageByMId(mid);
     }
+    public List<ClassroomMessage> getFilterMessage(ClassroomMessage message){
+        return classroomMessageMapper.getContradictMessage(message);
+    }
 }

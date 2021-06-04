@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -27,7 +28,11 @@ public class ClassroomMessageController {
     @ApiOperation(value = "插入预约记录")
     @PostMapping("insert")
     public ResultVO insert(@RequestBody ClassroomMessage message){
+        List<ClassroomMessage> messages = classroomMessageService.getFilterMessage(message);
+        if(messages != null){
+            return ResultVO.error(400,"与其他预约时间冲突");
+        }
         classroomMessageService.insert(message);
-        return ResultVO.success(Map.of("msg","插入成功"));
+        return ResultVO.success(Map.of("message",classroomMessageService.getMessageByMid(message.getMessageId())));
     }
 }

@@ -1,5 +1,6 @@
 package com.example.design.mapper;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.design.entity.ClassroomMessage;
 import org.apache.ibatis.annotations.Delete;
@@ -25,4 +26,11 @@ public interface ClassroomMessageMapper extends BaseMapper<ClassroomMessage> {
     void deleteMessageByTeacher(@Param("uid")long uid);
     @Select("select * from classroomMessage where message_id=#{mid}")
     ClassroomMessage getMessageByMId(@Param("mid")long mid);
+    default List<ClassroomMessage> getContradictMessage(ClassroomMessage message){
+        return selectList(new LambdaQueryWrapper<ClassroomMessage>()
+                .eq(ClassroomMessage::getLesson,message.getLesson())
+                .ge(ClassroomMessage::getStart,message.getStart())
+                .le(ClassroomMessage::getEnd,message.getEnd())
+        );
+    }
 }
