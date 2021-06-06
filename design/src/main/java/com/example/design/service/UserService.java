@@ -5,6 +5,7 @@ import com.example.design.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
@@ -49,5 +50,11 @@ public class UserService {
     @Cacheable(value = "user",key = "#uid")
     public User getUserByID(long uid){
         return userMapper.getUserById(uid);
+    }
+
+    @CachePut(value = "user",key = "#uid")
+    @CacheEvict(value = "users",allEntries = true)
+    public void updateUser(String password,String userName,String name,long uid){
+        userMapper.updateUser(password,userName,name,uid);
     }
 }

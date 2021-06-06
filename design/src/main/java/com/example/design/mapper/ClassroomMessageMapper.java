@@ -14,17 +14,17 @@ import java.util.List;
 @Mapper
 @Repository
 public interface ClassroomMessageMapper extends BaseMapper<ClassroomMessage> {
-    @Select("select * from classroomMessage where id = #{labid}")
+    @Select("select * from classroom_message where lab_id = #{labid}")
     List<ClassroomMessage> getMessage(@Param("labid") String labid);
-    @Delete("delete from classroomMessage where id = #{labid}")
+    @Delete("delete from classroom_message where lab_id = #{labid}")
     void deleteMessageByLabID(@Param("labid")String labid);
-    @Delete("delete from classroomMessage where message_id = #{mid}")
+    @Delete("delete from classroom_message where id = #{mid}")
     void deleteMessageByID(@Param("mid")long mid);
-    @Select("select * from classroomMessage where teacher_id = #{uid}")
+    @Select("select * from classroom_message where teacher_id = #{uid}")
     List<ClassroomMessage> getMessageByTeacher(@Param("uid") long uid);
-    @Delete("delete from classroomMessage where teacher_id = #{uid}")
+    @Delete("delete from classroom_message where teacher_id = #{uid}")
     void deleteMessageByTeacher(@Param("uid")long uid);
-    @Select("select * from classroomMessage where message_id=#{mid}")
+    @Select("select * from classroom_message where id=#{mid}")
     ClassroomMessage getMessageByMId(@Param("mid")long mid);
     default List<ClassroomMessage> getContradictMessage(ClassroomMessage message){
         return selectList(new LambdaQueryWrapper<ClassroomMessage>()

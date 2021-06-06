@@ -40,6 +40,9 @@ public class TeacherController {
     @ApiOperation(value = "添加课程信息")
     @PostMapping("insertCourse")
     public ResultVO insertCourse(@RequestBody Course course,@RequestAttribute("uid") long uid){
+        if(course.getCourseName()==null||course.getStudentNumber()==null){
+            ;
+        }
         course.setTeacherId(uid);
         course.setTeacherName(userService.getUserByID(uid).getName());
         courseService.insertCourse(course);

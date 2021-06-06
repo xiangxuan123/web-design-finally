@@ -23,7 +23,7 @@ public class ClassroomMessageService {
     }
 
     @Caching(evict = {
-            @CacheEvict(value = "labIdMessage",key = "#message.id"),
+            @CacheEvict(value = "labIdMessage",key = "#message.labId"),
             @CacheEvict(value = "uidMessage",key = "#message.teacherId")
     })
     public void insert(ClassroomMessage message){

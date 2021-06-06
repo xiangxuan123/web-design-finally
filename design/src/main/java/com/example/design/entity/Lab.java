@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.FieldStrategy;
 import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.*;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Data
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Lab {
     private String id;
+    @NotNull
     private Integer number;
     private String detail;
     @TableField(updateStrategy = FieldStrategy.NEVER)

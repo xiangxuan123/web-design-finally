@@ -39,10 +39,10 @@ create table if not exists lab
     create_time datetime not null default current_timestamp,
     update_time datetime not null default current_timestamp on update current_timestamp
 );
-create table if not exists classroomMessage
+create table if not exists classroom_message
 (
-    message_id bigint(19) not null primary key ,
-    id varchar(45) not null,
+    id bigint(19) not null primary key ,
+    lab_id varchar(45) not null,
     lesson varchar(45) ,
     course_name varchar(45),
     start bigint(19) ,
@@ -50,5 +50,5 @@ create table if not exists classroomMessage
     teacher_id bigint(19),
     teacher_name varchar(45),
     title varchar(45),
-    index(id)
+    index(lab_id)
 );

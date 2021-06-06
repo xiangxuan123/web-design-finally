@@ -47,7 +47,7 @@ public class ExceptionController {
      */
     @ExceptionHandler(DuplicateKeyException.class)
     public ResultVO handleValidException(DuplicateKeyException exception){
-        return ResultVO.error(400,"数据已存在，插入失败");
+        return ResultVO.error(400,"数据已存在，插入或更新失败");
     }
 
 

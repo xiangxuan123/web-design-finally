@@ -4,6 +4,9 @@ import com.baomidou.mybatisplus.annotation.FieldStrategy;
 import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.*;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Data
@@ -13,8 +16,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class User {
     private Long id;
+    @NotNull
     private String name;
+    @NotNull
     private String userName;
+    @NotNull
     private String password;
     private Integer role;
     @TableField(updateStrategy = FieldStrategy.NEVER)
