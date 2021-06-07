@@ -23,6 +23,6 @@ public interface UserMapper extends BaseMapper<User> {
     void setPassword(@Param("password") String password,@Param("uid")long uid);
     @Select("select * from user where id = #{uid}")
     User getUserById(@Param("uid") long uid);
-    @Update("update user set password=#{password},user_name=#{userName},name=#{name} where id=#{uid}")
-    void updateUser(@Param("password") String password,@Param("userName")String userName,@Param("name") String name,@Param("uid") long uid);
+    @Update("update user set password=#{password},user_name=#{userName},name=#{name},detail=#{detail},graduation_school=#{school},title=#{title} where id=#{uid}")
+    void updateUser(@Param("password") String password,@Param("userName")String userName,@Param("name") String name,@Param("detail") String detail,@Param("school") String school,@Param("title") String title,@Param("uid") long uid);
 }

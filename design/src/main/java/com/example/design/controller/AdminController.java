@@ -82,7 +82,13 @@ public class AdminController {
     @ApiOperation(value = "基于user更新用户信息")
     @PatchMapping("updateUser")
     public ResultVO updateUser(@Valid @RequestBody User user){
-        userService.updateUser(encoder.encode(user.getPassword()),user.getUserName(),user.getName(),user.getId());
+        userService.updateUser(encoder.encode(user.getPassword()),
+                user.getUserName(),
+                user.getName(),
+                user.getDetail(),
+                user.getGraduationSchool(),
+                user.getTitle(),
+                user.getId());
         log.debug("{}",user.getId());
         List<User> users = userService.selectAll();
         for (User user1 : users) {

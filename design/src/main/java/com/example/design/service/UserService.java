@@ -54,7 +54,7 @@ public class UserService {
 
     @CachePut(value = "user",key = "#uid")
     @CacheEvict(value = "users",allEntries = true)
-    public void updateUser(String password,String userName,String name,long uid){
-        userMapper.updateUser(password,userName,name,uid);
+    public void updateUser(String password,String userName,String name,String detail,String school,String title,long uid){
+        userMapper.updateUser(password,userName,name,detail,school,title,uid);
     }
 }
