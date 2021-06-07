@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Lab {
+    @NotNull
     private String id;
     @NotNull
     private Integer number;

@@ -36,6 +36,7 @@ public class ClassroomMessageController {
     public ResultVO insert(@RequestBody ClassroomMessage message, @RequestAttribute("uid") long uid){
         message.setTeacherId(uid);
         User u = userService.getUserByID(uid);
+        message.setTitle(u.getTitle());
         message.setTeacherName(u.getName());
         List<ClassroomMessage> messages = classroomMessageService.getFilterMessage(message);
         if(messages.size() != 0){

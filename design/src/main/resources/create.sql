@@ -16,7 +16,10 @@ create table if not exists user
 (
     id bigint(19) not null primary key ,
     name varchar(45) not null ,
-    user_name varchar(12) not null ,
+    user_name varchar(65) not null ,
+    title varchar(65),
+    graduation_school varchar(65),
+    detail varchar(65),
     password varchar(65) not null ,
     role int not null default 1 ,
     create_time datetime not null default current_timestamp,

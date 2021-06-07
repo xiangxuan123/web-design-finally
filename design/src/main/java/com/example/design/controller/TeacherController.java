@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
+import javax.validation.Valid;
 import java.util.Map;
 
 
@@ -39,10 +40,7 @@ public class TeacherController {
 
     @ApiOperation(value = "添加课程信息")
     @PostMapping("insertCourse")
-    public ResultVO insertCourse(@RequestBody Course course,@RequestAttribute("uid") long uid){
-        if(course.getCourseName()==null||course.getStudentNumber()==null){
-            ;
-        }
+    public ResultVO insertCourse(@Valid @RequestBody Course course, @RequestAttribute("uid") long uid){
         course.setTeacherId(uid);
         course.setTeacherName(userService.getUserByID(uid).getName());
         courseService.insertCourse(course);

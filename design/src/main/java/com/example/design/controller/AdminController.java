@@ -41,7 +41,10 @@ public class AdminController {
                 .password(encoder.encode(user.getPassword()))
                 .userName(user.getUserName())
                 .role(5)
-                . build();
+                .title(user.getTitle())
+                .graduationSchool(user.getGraduationSchool())
+                .detail(user.getDetail())
+                .build();
         userService.insertUser(u);
         List<User> users = userService.selectAll();
         for (User user1 : users) {
@@ -92,19 +95,6 @@ public class AdminController {
     @ApiOperation(value = "添加实验室")
     @PostMapping("insertLab")
     public ResultVO insertLab(@RequestBody Lab lab){
-        if(lab.getNumber()==null||lab.getId()==null){
-            StringBuilder builder = new StringBuilder();
-            if(lab.getId()==null){
-                builder.append("实验室id为空");
-            }
-            if(builder.toString()==null){
-                builder.append(",");
-            }
-            if (lab.getNumber()==null){
-                builder.append("实验室人数为空");
-            }
-            return ResultVO.error(400, builder.toString());
-        }
         labService.insert(lab);
         return ResultVO.success(Map.of("lab",labService.getAllLab()));
     }

@@ -22,6 +22,9 @@ public class User {
     private String userName;
     @NotNull
     private String password;
+    private String title;
+    private String graduationSchool;
+    private String detail;
     private Integer role;
     @TableField(updateStrategy = FieldStrategy.NEVER)
     private LocalDateTime createTime;
