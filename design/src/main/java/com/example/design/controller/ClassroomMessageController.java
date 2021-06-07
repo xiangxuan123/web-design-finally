@@ -3,7 +3,9 @@ package com.example.design.controller;
 import com.example.design.VO.ResultVO;
 import com.example.design.entity.ClassroomMessage;
 import com.example.design.entity.Course;
+import com.example.design.entity.User;
 import com.example.design.service.ClassroomMessageService;
+import com.example.design.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +22,8 @@ import java.util.Map;
 public class ClassroomMessageController {
     @Autowired
     private ClassroomMessageService classroomMessageService;
+    @Autowired
+    private UserService userService;
 
     @ApiOperation(value = "基于实验室ID查询预约信息")
     @GetMapping("{cid}")
@@ -31,6 +35,8 @@ public class ClassroomMessageController {
     @PostMapping("insert")
     public ResultVO insert(@RequestBody ClassroomMessage message, @RequestAttribute("uid") long uid){
         message.setTeacherId(uid);
+        User u = userService.getUserByID(uid);
+        message.setTeacherName(u.getName());
         List<ClassroomMessage> messages = classroomMessageService.getFilterMessage(message);
         if(messages.size() != 0){
             return ResultVO.error(400,"与其他预约时间冲突");
