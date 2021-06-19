@@ -1,6 +1,8 @@
 spring:
   application:
     name: design
+  profiles:
+    active: win
   redis:
     host: localhost
     port: 6379
@@ -21,6 +23,10 @@ spring:
     default-property-inclusion: non_null # 序列化时忽略空值属性
 server:
   port: 8080
+my:
+  secretkey: R28K42ZEJ8LWRHU5
+  salt: 636eac2534bcfcb0
+
 logging:
   level:
     root: warn
@@ -28,7 +34,3 @@ logging:
       example: debug
   pattern:
     console: '%-5level %C.%M[%line] - %msg%n'
-
-my:
-  secretkey: R28K42ZEJ8LWRHU5
-  salt: 636eac2534bcfcb0

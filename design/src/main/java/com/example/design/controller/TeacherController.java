@@ -42,7 +42,9 @@ public class TeacherController {
     @PostMapping("insertCourse")
     public ResultVO insertCourse(@Valid @RequestBody Course course, @RequestAttribute("uid") long uid){
         course.setTeacherId(uid);
-        course.setTeacherName(userService.getUserByID(uid).getName());
+        if (userService.getUserByID(uid)!=null) {
+            course.setTeacherName(userService.getUserByID(uid).getName());
+        }
         courseService.insertCourse(course);
 
         return ResultVO.success(Map.of("courses",courseService.getCourseByUid(uid)));

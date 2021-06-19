@@ -22,10 +22,6 @@ public class InitService implements InitializingBean {
     private PasswordEncoder encoder;
     @Autowired
     private UserMapper userMapper;
-    @Autowired
-    private LabMapper labMapper;
-    @Autowired
-    private CourseMapper courseMapper;
 
     @Override
     public void afterPropertiesSet() throws Exception {
@@ -38,31 +34,6 @@ public class InitService implements InitializingBean {
                     .userName("admin")
                     .password(encoder.encode("admin"))
                     .role(9)
-                    .build();
-            userMapper.insert(user);
-        }
-        //初始化实验室
-        count = labMapper.selectCount(new QueryWrapper<Lab>().select("number"));
-        if(count == 0){
-            Lab lab = Lab.builder()
-                    .id("901")
-                    .number(50)
-                    .build();
-            Lab lab1 = Lab.builder()
-                    .id("902")
-                    .number(20)
-                    .build();
-            labMapper.insert(lab);
-            labMapper.insert(lab1);
-        }
-        //初始化教师
-        count = userMapper.selectCount(new QueryWrapper<User>().select("id"));
-        if (count == 1) {
-            User user = User.builder()
-                    .name("BO")
-                    .userName("BO")
-                    .password(encoder.encode("BO"))
-                    .role(5)
                     .build();
             userMapper.insert(user);
         }

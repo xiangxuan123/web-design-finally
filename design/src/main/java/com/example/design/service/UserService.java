@@ -52,8 +52,10 @@ public class UserService {
         return userMapper.getUserById(uid);
     }
 
-    @CachePut(value = "user",key = "#uid")
-    @CacheEvict(value = "users",allEntries = true)
+    @Caching(evict = {
+            @CacheEvict(value = "users",allEntries = true),
+            @CacheEvict(value = "user",key = "#uid")
+    })
     public void updateUser(String password,String userName,String name,String detail,String school,String title,long uid){
         userMapper.updateUser(password,userName,name,detail,school,title,uid);
     }

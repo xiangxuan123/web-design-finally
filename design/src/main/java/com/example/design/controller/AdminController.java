@@ -115,7 +115,7 @@ public class AdminController {
     @DeleteMapping("deleteLab/{labID}")
     public ResultVO deleteLab(@PathVariable String labID){
         Lab lab = labService.getLab(labID);
-        if(lab == null || lab.getId()!=labID){
+        if(lab == null || !lab.getId().equals(labID)){
             return ResultVO.error(400,"该实验室不存在");
         }
         classroomMessageService.deleteMessageByLabID(labID);

@@ -36,8 +36,13 @@ public class ClassroomMessageController {
     public ResultVO insert(@RequestBody ClassroomMessage message, @RequestAttribute("uid") long uid){
         message.setTeacherId(uid);
         User u = userService.getUserByID(uid);
-        message.setTitle(u.getTitle());
-        message.setTeacherName(u.getName());
+        log.debug("{}",uid);
+        log.debug("{}",u);
+        if(u!=null) {
+            message.setTitle(u.getTitle());
+            message.setTeacherName(u.getName());
+            log.debug("{}",u.getName());
+        }
         List<ClassroomMessage> messages = classroomMessageService.getFilterMessage(message);
         if(messages.size() != 0){
             return ResultVO.error(400,"与其他预约时间冲突");

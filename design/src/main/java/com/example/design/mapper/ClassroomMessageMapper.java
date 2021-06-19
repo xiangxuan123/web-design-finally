@@ -31,6 +31,7 @@ public interface ClassroomMessageMapper extends BaseMapper<ClassroomMessage> {
                 .eq(ClassroomMessage::getLesson,message.getLesson())
                 .ge(ClassroomMessage::getStart,message.getStart())
                 .le(ClassroomMessage::getEnd,message.getEnd())
+                .eq(ClassroomMessage::getLabId,message.getLabId())
         );
     }
 }

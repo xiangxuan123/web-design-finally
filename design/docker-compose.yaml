@@ -1,0 +1,17 @@
+version: '3'
+services:
+  design:
+    image: openjdk:11
+    ports:
+      - 8080:8080
+    environment:
+      - nacos_host=http://nacos:8848
+      - nacos_password=Xiangxuan123!
+    volumes:
+      - ./:/home/design
+    command: java -jar /home/design/design-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod
+
+networks:
+  default:
+    external:
+      name: design_default

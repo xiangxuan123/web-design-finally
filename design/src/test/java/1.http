@@ -1,10 +1,10 @@
 ###
-POST http://localhost:8080/api/login
+POST http://8.140.4.21:8080/api/login
 Content-Type: application/json
 
 {
-  "userName": "admin",
-  "password": "admin"
+  "userName": "xx",
+  "password": "xx"
 }
 ###
 //没有token
@@ -44,15 +44,32 @@ Token: bde7eabfb8df9a169775d5a88c36fd4ee14394d9260942340aa92c490a266ac2a5c902f2f
 GET http://localhost:8080/api/teacher/getCourse
 Token: 7e4ad1369a2d5722b95656e7f532847d54cec110e2452c18ec2c4383db066e2dc2986c16b8e92e8eb0e9b9cdbbda91f3a29d4ebeaf75152d4c470eb33224367a
 ###
-POST http://localhost:8080/api/teacher/insertCourse
-Token: b9c23c85a2f3296911f464af3370f9b3cc22adf7632ed684692d99d11e131b403c5aec0a7fbd1688c4bfe55c18bca262388d8b7c29a25557320bada456db49e0
+POST http://8.140.4.21:8080/api/teacher/insertCourse
+Token: 71593f7b22cbee5c175de40b18f003262dec60f25bf6538ffc444f0c6254df05aa6e73b9676c4246c2b93534d47e68b2c281af74ba45710d8721a349a7e61172
 Content-Type: application/json
 
 {
-  "courseName": "JAVA",
-  "end": 10,
-  "period": 32,
+  "courseName": "TestCourse1",
+  "end": 18,
+  "period": 64,
   "start": 1,
   "studentNumber": 30
+}
+###
+GET http://8.140.4.21:8080/api/classMessage/906
+Token: 71593f7b22cbee5c175de40b18f003262dec60f25bf6538ffc444f0c6254df05aa6e73b9676c4246c2b93534d47e68b2c281af74ba45710d8721a349a7e61172
+
+###
+POST http://8.140.4.21:8080/api/classMessage/insert
+Token: 71593f7b22cbee5c175de40b18f003262dec60f25bf6538ffc444f0c6254df05aa6e73b9676c4246c2b93534d47e68b2c281af74ba45710d8721a349a7e61172
+Content-Type: application/json
+
+{
+  "labId": "906",
+  "end": 18,
+  "lesson": "0204",
+  "courseName": "TestCourse1",
+  "period": 64,
+  "start": 1
 }
 ###
