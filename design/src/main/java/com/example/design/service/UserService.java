@@ -23,8 +23,6 @@ public class UserService {
     public User getUser(String number){
         return userMapper.getByUserName(number);
     }
-    @Cacheable(value = "user",key = "#uid")
-    public void UserCache(long uid){}
 
     @CacheEvict(value= "users",allEntries = true)
     public void insertUser(User user){

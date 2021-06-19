@@ -3,8 +3,8 @@ POST http://8.140.4.21:8080/api/login
 Content-Type: application/json
 
 {
-  "userName": "xx",
-  "password": "xx"
+  "userName": "BO",
+  "password": "123456"
 }
 ###
 //没有token
@@ -24,8 +24,8 @@ Token: 5e130f3a74a6351ac84b77227b2a6f5d9e62b8fb6c000f2e1b7eb788b8f93828f8d8608c3
 
 ###
 //已修复
-GET http://localhost:8080/api/admin/getUsers
-Token: bde7eabfb8df9a169775d5a88c36fd4ee14394d9260942340aa92c490a266ac2a5c902f2f34d5962f650f09a0f1625fa82159c831bfc85912c7c604a87f69af2
+GET http://8.140.4.21:8080/api/admin/getUsers
+Token: fa1cbe1574216cc51e8c442c930d4368d7dbf7c3a6c91d03b0275a4eabf09ba3380acd641c2048963b7e9e0a8b4dfc552f1848186f74c862c28b9e013d934587
 ###
 POST http://localhost:8080/api/admin/add
 Token: 1c8691339793ce2265e31dd459786a0bb3d6def2e72000a7c4ee3c801d01e10da651a25574f15ee5945d363f5b4514a7e9b564ae714d7a1507e29c5621b86574
@@ -61,14 +61,14 @@ Token: 71593f7b22cbee5c175de40b18f003262dec60f25bf6538ffc444f0c6254df05aa6e73b96
 
 ###
 POST http://8.140.4.21:8080/api/classMessage/insert
-Token: 71593f7b22cbee5c175de40b18f003262dec60f25bf6538ffc444f0c6254df05aa6e73b9676c4246c2b93534d47e68b2c281af74ba45710d8721a349a7e61172
+Token: adb28caa697ed0b317cf704c1da5a34d4bc4b437d2b83e36f8461f0259f74f23c6f85d7b1f652fad022b19b1dce7bd0f160c3e61d1600e5e72c48fe4681abc51
 Content-Type: application/json
 
 {
   "labId": "906",
-  "end": 18,
-  "lesson": "0204",
-  "courseName": "TestCourse1",
+  "end": 2,
+  "lesson": "0305",
+  "courseName": "Web系统框架",
   "period": 64,
   "start": 1
 }
