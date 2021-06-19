@@ -8,10 +8,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="spring-examples" />
-        <module name="mybatis-examples" />
-        <module name="springMVC" />
         <module name="design" />
         <module name="design-gateway" />
+        <module name="mybatis-examples" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -19,6 +18,7 @@
       <module name="springboot-helloworld" target="11" />
       <module name="springboot-jpa-examples" target="11" />
       <module name="springboot-spring-examples" target="11" />
+      <module name="springMVC" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

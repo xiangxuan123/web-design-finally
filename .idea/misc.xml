@@ -6,9 +6,6 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/springboot-mybatis/pom.xml" />
-        <option value="$PROJECT_DIR$/mybatis-examples/pom.xml" />
-        <option value="$PROJECT_DIR$/spring-examples/pom.xml" />
-        <option value="$PROJECT_DIR$/springMVC/pom.xml" />
         <option value="$PROJECT_DIR$/design/pom.xml" />
         <option value="$PROJECT_DIR$/design-gateway/pom.xml" />
       </list>
