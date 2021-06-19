@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        server-addr: ${nacos_host}
+        username: nacos
+        password: ${nacos_password}
+        namespace: public
+    gateway:
+      routes:
+        - id: design
+          predicates:
+            - Path=/order-api/**
+          uri: lb://design
+          filters:
+            - StripPrefix=1
+            - PrefixPath=/api/

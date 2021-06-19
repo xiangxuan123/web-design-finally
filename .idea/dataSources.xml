@@ -10,5 +10,14 @@
       <working-dir>$ProjectFileDir$</working-dir>
       <time-zone>Asia/Shanghai</time-zone>
     </data-source>
+    <data-source source="LOCAL" name="Design@8.140.4.21" uuid="81d9e8ab-44a7-4b76-903c-c1cffed3f6d3">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <remarks>8.140.4.21</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://8.140.4.21:3306/Design</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+      <time-zone>Asia/Shanghai</time-zone>
+    </data-source>
   </component>
 </project>

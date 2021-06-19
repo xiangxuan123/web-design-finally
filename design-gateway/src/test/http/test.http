@@ -1,0 +1,7 @@
+GET localhost/api/user
+
+###
+GET localhost/order-api/admin/getUsers
+Token: bd88860701f0084d5f1dfcca691e6307b658c592bff94b11d0d746399e9f92edff6d9d3cee3c31487af42a66dabc1de0af2f4c462c250175e3e592ab4782c54d
+
+###

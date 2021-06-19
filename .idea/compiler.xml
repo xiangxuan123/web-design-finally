@@ -11,6 +11,7 @@
         <module name="mybatis-examples" />
         <module name="springMVC" />
         <module name="design" />
+        <module name="design-gateway" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: design-gateway
+  profiles:
+    active: win
+server:
+  port: 80

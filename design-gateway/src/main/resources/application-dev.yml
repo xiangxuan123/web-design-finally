@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        enabled: false
+    gateway:
+      routes:
+        - id: design
+          predicates:
+            - Path=/order-api/**
+          uri: http://localhost:8080
+          filters:
+            - StripPrefix=1
+            - PrefixPath=/api/

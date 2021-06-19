@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/spring-examples/pom.xml" />
         <option value="$PROJECT_DIR$/springMVC/pom.xml" />
         <option value="$PROJECT_DIR$/design/pom.xml" />
+        <option value="$PROJECT_DIR$/design-gateway/pom.xml" />
       </list>
     </option>
   </component>
