@@ -23,3 +23,5 @@
 将后端服务部署在阿里云上，配置了openjdk11/MySQL8，两个微服务通过docker-compose
 编排管理在同一桥接网络实现互交，通过配置容器环境变量实现开发/生产环境的隔离。2个微服务
 注册在独立的nacos docker容器。
+
+启动服务之前先启动nacos，还可以本地访问swagger文档，基于swagger文档进行测试
